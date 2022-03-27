@@ -3,35 +3,42 @@
     static void Main(string[] args)
     {
         Random random = new Random();
-        string Player = "Темный колдун";
+        string player = "Темный колдун";
         int playerHealth = 700;
+
         string sphereOfDarkness = "Сфера тьмы";
         int sphereOfDarknessDamage = 150;
+
         string darkDoppelganger = "Темный двойник";
         int darkDoppelgangerHealth = 0;
         int healthDividerDoppelganger = 2;
         int darkDoppelgangerDamage = 100;
         int darkDoppelgangerAdditionalDamage = 0;
         bool darkDopelgangerIsCalled = false;
+
         string prayerOfAbaddon = "Молитва Абаддон";
         int prayerOfAbaddonDamage = 190;
         bool isPrayerOfAbaddon = false;
+
         string crystalOfNothingness = "Кристалл небытия";
         int crystalOfNothingnessHealing = 220;
         int choiceCastSphereOfDarkness;
         int minimumNumberProbabilityCastSphereOfDarkness = 1;
         int maximumNumberProbabilityCastSphereOfDarkness = 11;
+
         string bossName = "Такхазис";
         int bossHealth = 1200;
         int rageTresholdBossHealth = 700;
         int minimumBossDamage = 70;
         int maximumBossDamage = 200;
         int bossDamage;
+
         int bossCriticalDamage;
         int criticalBossDamageMultiplier = 2;
         int criticalBossDamageChoice;
         int minimumNumberOfCriticalBossDamageProbability = 1;
         int maximumNumberOfCriticalBossDamageProbability = 11;
+
         int playerInput;
 
         Console.WriteLine($"Добро пожаловать на битву с боссом!\nВам предстоит сразиться против божества {bossName} в облике " +
@@ -39,15 +46,15 @@
         Console.WriteLine($"{bossName} крайне сильный противник, когда здоровье её будет на исходе, она приходит в ярость и может с некоторой вероятностью" +
             $"нанести двукратный урон.");
         Console.WriteLine($"Прежде чем начинать бой, давайте ознакомимся с вашими способностями:\n" +
-            $"вы - {Player}. \nДабы обрести великую силу, вы ступили на путь черного темного, поклоняясь и черпая силу у богов тьмы.\n" +
+            $"вы - {player}. \nДабы обрести великую силу, вы ступили на путь черного темного, поклоняясь и черпая силу у богов тьмы.\n" +
             $"Ваши умения:\n1.{sphereOfDarkness} - выпускает во врага сферу, нанося {sphereOfDarknessDamage} урона\n" +
             $"2.{prayerOfAbaddon} - Помолившись Абаддон, всадник апокалипсиса обрушит на врага свой гнев, нанося {prayerOfAbaddonDamage} урона, а также дает возможность\n" +
             $"использовать способность - {darkDoppelganger}\n" +
-            $"3.{darkDoppelganger} - С помощью силы Абаддон призывает своего двойника из царства тьмы, который имее 50% здоровья от текущего здоровья призывающего и наносит {darkDoppelgangerDamage}" +
-            $" урона противнику. Принимает на себя следующую атаку противника.\nЕсли двойник погибает от атаки, то наносит дополнительно 100% урона от потерянного здоровья врагу, если двойник выживает, то" +
-            $" отнимает 100% от оставшегося здоровья у призывателя\n" +
-            $"4.{crystalOfNothingness} - заключает себя в кристалл и восстанавливает {crystalOfNothingnessHealing} здоровья. Имеет шанс 1:10 немедленно применить {sphereOfDarkness}");
-        Console.WriteLine($"{Player}: {playerHealth} здоровья.\n{bossName}: {bossHealth} здоровья.");
+            $"3.{darkDoppelganger} - С помощью силы Абаддон призывает своего двойника из царства тьмы, который имеет половину здоровья от текущего здоровья призывающего и наносит {darkDoppelgangerDamage}" +
+            $" урона противнику. Принимает на себя следующую атаку противника.\nЕсли двойник погибает от атаки, то наносит дополнительный  урон, равный потерянному здоровью, врагу. Если двойник выживает, то" +
+            $" забирает у хозяина количество здоровья равное своему текущему здоровью\n" +
+            $"4.{crystalOfNothingness} - заключает себя в кристалл и восстанавливает {crystalOfNothingnessHealing} здоровья. Имеет небольшой шанс немедленно применить {sphereOfDarkness}");
+        Console.WriteLine($"{player}: {playerHealth} здоровья.\n{bossName}: {bossHealth} здоровья.");
         Console.WriteLine("Битва начинается!");
 
         while (playerHealth > 0 && bossHealth > 0)
@@ -58,12 +65,12 @@
             {
                 case 1:
                     bossHealth -= sphereOfDarknessDamage;
-                    Console.WriteLine($"{Player} использует заклинание {sphereOfDarkness} и наносит {sphereOfDarknessDamage} урона.\n" + $"{bossName}: {bossHealth} здоровья");
+                    Console.WriteLine($"{player} использует заклинание {sphereOfDarkness} и наносит {sphereOfDarknessDamage} урона.\n" + $"{bossName}: {bossHealth} здоровья");
                     break;
                 case 2:
                     bossHealth -= prayerOfAbaddonDamage;
                     isPrayerOfAbaddon = true;
-                    Console.WriteLine($"{Player} использует заклинание {prayerOfAbaddon} и наносит {prayerOfAbaddonDamage} урона. Аббадон даровала силы\n" +
+                    Console.WriteLine($"{player} использует заклинание {prayerOfAbaddon} и наносит {prayerOfAbaddonDamage} урона. Аббадон даровала силы\n" +
                         $", заклинание {darkDoppelganger} можно применять!\n" +
                         $"{bossName}: {bossHealth} здоровья");
                     break;
@@ -76,7 +83,7 @@
                         darkDopelgangerIsCalled = true;
                         isPrayerOfAbaddon = false;
                         bossHealth -= darkDoppelgangerDamage;
-                        Console.WriteLine($"{Player} призывает {darkDoppelganger}, он имеет {darkDoppelgangerHealth} здоровья. Наносит противнику {darkDoppelgangerDamage}\n" +
+                        Console.WriteLine($"{player} призывает {darkDoppelganger}, он имеет {darkDoppelgangerHealth} здоровья. Наносит противнику {darkDoppelgangerDamage}\n" +
                             $"{bossName}: {bossHealth} здоровья");
                     }
                     else
@@ -87,8 +94,8 @@
                     break;
                 case 4:
                     playerHealth += crystalOfNothingnessHealing;
-                    Console.WriteLine($"{Player} использует заклинание {crystalOfNothingness} и восстанавливает {crystalOfNothingnessHealing} здоровья.\n" +
-                        $"{Player}: {playerHealth} здоровья.");
+                    Console.WriteLine($"{player} использует заклинание {crystalOfNothingness} и восстанавливает {crystalOfNothingnessHealing} здоровья.\n" +
+                        $"{player}: {playerHealth} здоровья.");
                     choiceCastSphereOfDarkness = random.Next(minimumNumberProbabilityCastSphereOfDarkness, maximumNumberProbabilityCastSphereOfDarkness);
 
                     if (choiceCastSphereOfDarkness == minimumNumberProbabilityCastSphereOfDarkness)
@@ -107,7 +114,7 @@
             {
                 bossDamage = random.Next(minimumBossDamage, maximumBossDamage);
                 playerHealth -= bossDamage;
-                Console.WriteLine($"{bossName} атакует и наносит {bossDamage} урона.\n{Player}: {playerHealth} здоровья.");
+                Console.WriteLine($"{bossName} атакует и наносит {bossDamage} урона.\n{player}: {playerHealth} здоровья.");
             }
             else if (darkDopelgangerIsCalled == false && bossHealth <= rageTresholdBossHealth)
             {
@@ -118,12 +125,12 @@
                 if (criticalBossDamageChoice == minimumNumberOfCriticalBossDamageProbability)
                 {
                     playerHealth -= bossCriticalDamage;
-                    Console.WriteLine($"{bossName} атакует и наносит {bossCriticalDamage} критического урона.\n{Player}: {playerHealth} здоровья.");
+                    Console.WriteLine($"{bossName} атакует и наносит {bossCriticalDamage} критического урона.\n{player}: {playerHealth} здоровья.");
                 }
                 else
                 {
                     playerHealth -= bossDamage;
-                    Console.WriteLine($"{bossName} атакует и наносит {bossDamage} урона.\n{Player}: {playerHealth} здоровья.");
+                    Console.WriteLine($"{bossName} атакует и наносит {bossDamage} урона.\n{player}: {playerHealth} здоровья.");
                 }
             }
             else if (darkDopelgangerIsCalled == true && bossHealth >= rageTresholdBossHealth)
